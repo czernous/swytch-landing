@@ -215,14 +215,18 @@ prevReview.addEventListener("click",  () => {
 });
 
 //Payment page modal
-const payBtn = document.querySelector('.pay-btn');
+const payBtn = document.querySelector('#pay-btn');
 const closeBtn = document.querySelector('.close-btn');
 const modalOverlay = document.querySelector('.modal-overlay');
-payBtn.addEventListener('submit', () => {
+function openModal() {
   modalOverlay.classList.add('open-modal');
-});
+  return false;
+}
+
 closeBtn.addEventListener('click', () => {
   modalOverlay.classList.remove('open-modal');
+  currentSlide(0);
+  stopVideo(slides[1]);
 });
 
 

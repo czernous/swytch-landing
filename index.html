@@ -68,7 +68,7 @@
 		<main id="main-slider" class="main-slider">
 			<!-- Next/Prev buttons -->
 			<button id="right-arrow" class="arrows">
-				<svg id="right-arrow" class="arrows" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+				<svg id="right-arrow" class="arrows" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve">
 				<g>
 					<g>
 						<g>
@@ -93,7 +93,7 @@
 				</svg>
 			</button>
 			<button id="left-arrow" class="arrows">
-				<svg id="right-arrow" class="arrows" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+				<svg id="right-arrow" class="arrows" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve">
 				<g>
 					<g>
 						<g>
@@ -203,7 +203,8 @@
 			<section id="payment" class="content-slide">
 				<h2 class="xl-heading bold">Checkout</h2>
 				<div class="form-container">
-					<form class="checkout-form" action="#">
+					<form class="checkout-form" onsubmit="return openModal()" method="POST">
+
 					  <label for="name">
 					    Your name:
 					    <input type="name" name="name" id="name" required placeholder="Full Name">
@@ -219,11 +220,11 @@
 						<input type="number" name="cardNumber"id="card-number" required placeholder="1111-2222-3333-4444">
 						<div class="expiry">
 						<input type="expiry" name="expiration" id="expiry" required placeholder="MM - YY">
-						<input type="ccv" name="ccb" id="ccv" required min-length="3" placeholder="777">
+						<input type="ccv" name="ccv" id="ccv" required min-length="3" placeholder="777">
 						</div>
 						<input type="cardholder" name="cardholder" id="cardholder" required placeholder="Cardholder">
 					  </div>
-					  <button class="btn pay-btn" type="submit"><span class="bold">Pay</span></button>
+					  <button class="btn pay-btn" id="pay-btn" type="submit"><span class="bold">Pay</span></button>
 					</form>
 				</div>
 				<div class="modal-overlay">
