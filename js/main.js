@@ -67,8 +67,6 @@ function stopVideo(element) {
     }
       iframe.src = iframeSrc;
 }
-//prevent video from playing on load/refresh
-window.onload = stopVideo(slides[1]);
 // Carousel
 let counter = 0;
 nextBtn.addEventListener('click', () =>{
@@ -131,6 +129,8 @@ let observer = new IntersectionObserver((entries, observer) => {
   });
 }, {threshold: 1});
 observer.observe(productContainer);
+//prevent video from playing on load/refresh
+document.addEventListener('DOMContentLoaded', stopVideo(slides[1]));
 //Reviews
 // local reviews data
 const reviews = [
