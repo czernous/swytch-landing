@@ -198,7 +198,7 @@ function showPerson(person) {
   info.textContent = item.text;
 }
 // show next person
-nextReview.addEventListener("submit",  () => {
+nextReview.addEventListener("click",  () => {
   currentReview++;
   if (currentReview > reviews.length - 1) {
     currentReview = 0;
@@ -218,7 +218,7 @@ prevReview.addEventListener("click",  () => {
 const payBtn = document.querySelector('.pay-btn');
 const closeBtn = document.querySelector('.close-btn');
 const modalOverlay = document.querySelector('.modal-overlay');
-payBtn.addEventListener('click', () => {
+payBtn.addEventListener('submit', () => {
   modalOverlay.classList.add('open-modal');
 });
 closeBtn.addEventListener('click', () => {
