@@ -67,6 +67,9 @@ function stopVideo(element) {
     }
       iframe.src = iframeSrc;
 }
+//prevent video from playing on load/refresh
+window.onload = stopVideo(slides[1]);
+// Carousel
 let counter = 0;
 nextBtn.addEventListener('click', () =>{
   counter++;
