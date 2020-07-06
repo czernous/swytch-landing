@@ -578,7 +578,7 @@ button.btn {
 }
 /*TYPOGRAPHY*/
 .bold {
-  font-family: "Campton-BoldDEMO"
+  font-family: "Campton-BoldDEMO", sans-serif;
 }
 .xl-heading {
   text-transform: uppercase;
