@@ -466,7 +466,7 @@ button.hamburger:focus, button.hamburger:active {
 button svg {
   fill: var(--main-blue);
 }
-/*nav buttona*/
+/*nav buttons*/
 .arrows {
   height: 3rem;
   width: 3rem;
@@ -664,6 +664,7 @@ p.product-description {
   }
   .xl-heading {
     font-size: 2.4rem;
+    margin-top: 1rem;
   }
   .product-container {
     max-width: 85%;
@@ -695,6 +696,9 @@ p.product-description {
   button.hamburger {
     visibility: visible;
   }
+  .logo {
+    margin-left: 70px;
+  }
   .cta {
     flex-direction: column;
     margin-top: 0;
@@ -720,9 +724,6 @@ p.product-description {
 @media (max-width: 43.75em){
   html {
     font-size: 70%;
-  }
-  .logo {
-    margin-left: 8%;
   }
   #side-menu-nav {
     width: 18rem;
@@ -794,11 +795,15 @@ p.product-description {
     max-height: 90%;
   }
 }
-/*--------*/
-/* 360px / 16 = 22.5em */
-@media (max-height: 22.5em) {
+/*----landscape mode----*/
+
+/* 384px / 16 = 24em */
+@media (max-height: 24em) {
   .arrows {
     top: 85%;
+  }
+  .xl-heading {
+    margin-top: 1rem;
   }
 }
   /* Animation */
