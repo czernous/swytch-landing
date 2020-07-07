@@ -1,105 +1,101 @@
-
 //Navbar
 //Hamburger button animation/controls
-  const hamburger = document.querySelector(".hamburger");
-  const navLinks = document.querySelector(".animate-nav");
-  const sideMenu = document.getElementById("side-menu");
-  const sideMenuNav = document.getElementById("side-menu-nav");
-  const projects = document.querySelector(".main-content.projects-section");
-  const overlay = document.querySelector(".overlay");
-  const menuControl = function menuAnimate() {
-    hamburger.classList.toggle("is-active");
-    navLinks.classList.toggle("slide-from-top");
-    sideMenu.classList.toggle("side-menu-visible");
-    // overlay.classList.toggle("overlay-on");
-    // projects.classList.toggle("send-back");
-    sideMenuNav.style.display = 'block';
-  };
-  hamburger.addEventListener("click", menuControl);
-  sideMenuNav.addEventListener("click", menuControl);
+const hamburger = document.querySelector(".hamburger");
+const navLinks = document.querySelector(".animate-nav");
+const sideMenu = document.getElementById("side-menu");
+const sideMenuNav = document.getElementById("side-menu-nav");
+const projects = document.querySelector(".main-content.projects-section");
+const overlay = document.querySelector(".overlay");
+const menuControl = function menuAnimate() {
+  hamburger.classList.toggle("is-active");
+  navLinks.classList.toggle("slide-from-top");
+  sideMenu.classList.toggle("side-menu-visible");
+  // overlay.classList.toggle("overlay-on");
+  // projects.classList.toggle("send-back");
+  sideMenuNav.style.display = "block";
+};
+hamburger.addEventListener("click", menuControl);
+sideMenuNav.addEventListener("click", menuControl);
 //Slide Navbar UP/Down on Scroll
 let scrollPos = 50;
-const nav = document.getElementById('header');
+const nav = document.getElementById("header");
 const navBg = document.querySelector(".header-bg");
 function checkPosition() {
   let windowY = window.scrollY;
-  if ((windowY < scrollPos) && (windowY > 20)) {
+  if (windowY < scrollPos && windowY > 20) {
     // Scrolling UP
     nav.style.display = "flex";
     navBg.classList.add("header-bg-slide-down");
-  } else if ((scrollPos = windowY) && (windowY > 20)){
+  } else if ((scrollPos = windowY) && windowY > 20) {
     // Scrolling DOWN
-  nav.style.display = "none";
-  navBg.classList.remove("header-bg-slide-down");
-  navBg.classList.remove("header-bg-slide-up");
+    nav.style.display = "none";
+    navBg.classList.remove("header-bg-slide-down");
+    navBg.classList.remove("header-bg-slide-up");
   } else {
     navBg.classList.add("header-bg-slide-up");
     //hide nav background at the top of the screen
   }
   scrollPos = windowY;
 }
-window.addEventListener('scroll', checkPosition);
+window.addEventListener("scroll", checkPosition);
 //Main content slider
-const contentSlides = document.querySelectorAll('.content-slide');
+const contentSlides = document.querySelectorAll(".content-slide");
 const slides = Array.from(contentSlides);
-const nextBtn = document.getElementById('right-arrow');
-const prevBtn = document.getElementById('left-arrow');
+const nextBtn = document.getElementById("right-arrow");
+const prevBtn = document.getElementById("left-arrow");
 //Hide and show slides
-function activeOnOff(){
-    let i;
-    for (i = 0; i >= 0 && i < slides.length; i++) {
+function activeOnOff() {
+  let i;
+  for (i = 0; i >= 0 && i < slides.length; i++) {
     if (i != counter) {
       slides[i].classList.remove("active");
     }
-    slides[counter].classList.add("active");    
+    slides[counter].classList.add("active");
   }
 }
 //stop and resume the video
 function stopVideo(element) {
-    const iframe = element.querySelector('iframe');
-    let iframeSrc = "https://www.youtube.com/embed/RGCNW2KOtIE"
-    const autoplay = "?autoplay=1;rel=0";
-    if (counter === 1 && counter != null) {
-      iframeSrc += autoplay;
-    }      
-    else if (counter !== 1) {
-        iframe.src = null;
-    }
-      iframe.src = iframeSrc;
+  const iframe = element.querySelector("iframe");
+  let iframeSrc = "https://www.youtube.com/embed/RGCNW2KOtIE";
+  const autoplay = "?autoplay=1;rel=0";
+  if (counter === 1 && counter != null) {
+    iframeSrc += autoplay;
+  } else if (counter !== 1) {
+    iframe.src = null;
+  }
+  iframe.src = iframeSrc;
 }
 // Carousel
 let counter = 0;
-nextBtn.addEventListener('click', () =>{
+nextBtn.addEventListener("click", () => {
   counter++;
   carousel();
 });
-prevBtn.addEventListener('click', () =>{
+prevBtn.addEventListener("click", () => {
   counter--;
   carousel();
 });
 //Show and hide prev/next buttons on slide change
 function btnShowHide() {
-  if(counter < slides.length -2){
+  if (counter < slides.length - 2) {
     nextBtn.style.display = "flex";
-  }
-  else {
+  } else {
     nextBtn.style.display = "none";
   }
-  if (counter > 0){
+  if (counter > 0) {
     prevBtn.style.display = "flex";
-  }
-  else {
+  } else {
     prevBtn.style.display = "none";
   }
 }
-//Navigate to slide 
+//Navigate to slide
 function currentSlide(n) {
-  activeOnOff(counter = n);
+  activeOnOff((counter = n));
   stopVideo(slides[1]);
   btnShowHide();
 }
 //carousel control
-function carousel(){
+function carousel() {
   btnShowHide();
   activeOnOff();
   stopVideo(slides[1]);
@@ -110,7 +106,7 @@ let currentItem = 0;
 const productContainer = document.querySelector(".product-container");
 const productSlides = document.querySelectorAll(".product-slide");
 const items = Array.from(productSlides);
-function productCarousel(){
+function productCarousel() {
   let r = Math.floor(Math.random() * items.length);
   let i;
   for (i = 0; i >= 0 && i < items.length; i++) {
@@ -120,17 +116,20 @@ function productCarousel(){
     items[r].classList.add("active");
   }
 }
-let observer = new IntersectionObserver((entries, observer) => { 
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      setInterval(productCarousel, 10000); 
-    }
-    clearInterval(productCarousel);
-  });
-}, {threshold: 1});
+let observer = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        setInterval(productCarousel, 10000);
+      }
+      clearInterval(productCarousel);
+    });
+  },
+  { threshold: 1 }
+);
 observer.observe(productContainer);
 //prevent video from playing on load/refresh
-document.addEventListener('DOMContentLoaded', stopVideo(slides[1]));
+document.addEventListener("DOMContentLoaded", stopVideo(slides[1]));
 //Reviews
 // local reviews data
 const reviews = [
@@ -201,7 +200,7 @@ function showPerson(person) {
   info.textContent = item.text;
 }
 // show next person
-nextReview.addEventListener("click",  () => {
+nextReview.addEventListener("click", () => {
   currentReview++;
   if (currentReview > reviews.length - 1) {
     currentReview = 0;
@@ -209,7 +208,7 @@ nextReview.addEventListener("click",  () => {
   showPerson(currentReview);
 });
 // show prev person
-prevReview.addEventListener("click",  () => {
+prevReview.addEventListener("click", () => {
   currentReview--;
   if (currentReview < 0) {
     currentReview = reviews.length - 1;
@@ -218,24 +217,23 @@ prevReview.addEventListener("click",  () => {
 });
 
 //Payment page modal
-const payBtn = document.querySelector('#pay-btn');
-const closeBtn = document.querySelector('.close-btn');
-const modalOverlay = document.querySelector('.modal-overlay');
+const payBtn = document.querySelector("#pay-btn");
+const closeBtn = document.querySelector(".close-btn");
+const modalOverlay = document.querySelector(".modal-overlay");
 function openModal() {
-  modalOverlay.classList.add('open-modal');
+  modalOverlay.classList.add("open-modal");
   return false;
 }
 
-closeBtn.addEventListener('click', () => {
-  modalOverlay.classList.remove('open-modal');
+closeBtn.addEventListener("click", () => {
+  modalOverlay.classList.remove("open-modal");
   currentSlide(0);
   stopVideo(slides[1]);
 });
 
-
 //countdown timer
-const deadline = document.querySelector('.deadline');
-const item = document.querySelector('.hours');
+const deadline = document.querySelector(".deadline");
+const item = document.querySelector(".hours");
 
 let today = new Date().getTime();
 
@@ -243,13 +241,13 @@ const futureDate = new Date("Jul 10, 2020 00:00:00");
 
 const futureTime = futureDate.getTime();
 
-function getRemainingTime(){
+function getRemainingTime() {
   const today = new Date().getTime();
   const t = futureTime - today;
 
-  const oneHour = 60*60*1000;
-  const oneMinute = 60*1000;
-  let hours = t/oneHour;
+  const oneHour = 60 * 60 * 1000;
+  const oneMinute = 60 * 1000;
+  let hours = t / oneHour;
   hours = Math.floor(hours);
   // let hours = Math.floor((t % oneDay) / oneHour);
   let minutes = Math.floor((t % oneHour) / oneMinute);
@@ -258,7 +256,6 @@ function getRemainingTime(){
   if (futureTime < today) {
     item.textContent = "0";
   }
-
 }
 let countdown = setInterval(getRemainingTime, 1000);
 
